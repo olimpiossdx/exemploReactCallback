@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Callbac from './calbac';
 
 function App() {
-  function Change(event: any) {
+  const [texto, setTexto] = useState('');
+
+  function Change(event: React.ChangeEvent<HTMLInputElement>) {
+    setTexto(event.target.value);
     console.log('event.target.value', event.target.value);
   }
   return (
@@ -13,6 +16,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h3>Exemplo simples usando callback</h3>
         <Callbac change={() => Change} />
+        <p> seu texto => {texto}</p>
       </header>
     </div>
   );
